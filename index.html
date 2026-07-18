@@ -3,122 +3,215 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inside D — the field hockey fan app</title>
-<meta name="description" content="Inside D federates Europe's field hockey leagues into one fan app: live scores, standings, playoff brackets and push notifications.">
+<title>Inside D · The field hockey fan app</title>
+<meta name="description" content="Inside D brings Europe's field hockey leagues into one fan app: live scores, standings, playoff brackets and push notifications.">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <style>
   :root {
     --blue: #11679e;
-    --navy: #173a52;
-    --bg: #f4f2ee;
-    --text: #2b2b2b;
-    --muted: #5f6a72;
+    --navy: #14304a;
+    --navy-deep: #0e2438;
+    --bg: #faf9f7;
+    --text: #26313a;
+    --muted: #6b7681;
+    --line: #e6e2db;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
-  a { color: var(--blue); }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text); background: var(--bg); line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 28px; }
 
-  header { background: var(--navy); color: #fff; padding: 56px 0 48px; text-align: center; }
-  header img.logo { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 6px 24px rgba(0,0,0,.35); }
-  header h1 { font-size: 2.2rem; margin-top: 18px; letter-spacing: .5px; }
-  header p.tagline { font-size: 1.15rem; color: #cfdde8; margin-top: 8px; }
+  /* Hero */
+  .hero {
+    background: linear-gradient(170deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: #fff; padding: 92px 0 200px; text-align: center;
+  }
+  .hero img.logo {
+    width: 88px; height: 88px; border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.4);
+  }
+  .hero h1 {
+    font-size: 2.6rem; font-weight: 700; letter-spacing: .01em; margin-top: 26px;
+  }
+  .hero p.tagline {
+    font-size: 1.25rem; font-weight: 300; color: #b9cddd;
+    margin-top: 12px; letter-spacing: .01em;
+  }
+  .hero p.sub {
+    max-width: 560px; margin: 22px auto 0; color: #8fa9bd; font-size: 1rem;
+  }
 
-  section { padding: 48px 0; }
-  h2 { color: var(--navy); font-size: 1.4rem; margin-bottom: 18px; }
-
-  .shots { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  /* Screenshots overlapping the hero */
+  .shots-band { margin-top: -150px; padding-bottom: 20px; }
+  .shots { display: flex; gap: 34px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
   .shots figure { text-align: center; }
-  .shots img { width: 240px; max-width: 80vw; border-radius: 18px; border: 1px solid #d8d4cc; box-shadow: 0 10px 30px rgba(23,58,82,.18); display: block; }
-  .shots figcaption { font-size: .85rem; color: var(--muted); margin-top: 10px; }
+  .shots img {
+    width: 232px; max-width: 78vw; display: block;
+    border-radius: 20px; border: 1px solid rgba(255,255,255,.5);
+    box-shadow: 0 18px 50px rgba(14,36,56,.28);
+  }
+  .shots figure:nth-child(2) { margin-top: 34px; }
+  .shots figcaption {
+    font-size: .82rem; color: var(--muted); margin-top: 14px;
+    text-transform: uppercase; letter-spacing: .12em;
+  }
 
-  ul.features { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-  ul.features li { background: #fff; border-radius: 12px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(23,58,82,.08); }
-  ul.features li strong { color: var(--navy); }
+  /* Stats band */
+  .stats { padding: 72px 0 8px; }
+  .stats .row {
+    display: flex; justify-content: center; gap: 72px; flex-wrap: wrap; text-align: center;
+  }
+  .stats .n { font-size: 2.1rem; font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .stats .l { font-size: .82rem; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; margin-top: 4px; }
 
-  .coverage { background: #fff; border-radius: 12px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(23,58,82,.08); }
-  .coverage p { margin: 6px 0; }
+  /* Sections */
+  section { padding: 72px 0; }
+  .kicker {
+    font-size: .8rem; text-transform: uppercase; letter-spacing: .18em;
+    color: var(--blue); font-weight: 600; margin-bottom: 10px;
+  }
+  h2 { color: var(--navy); font-size: 1.65rem; font-weight: 700; margin-bottom: 14px; }
+  p.lead { max-width: 640px; color: var(--muted); }
 
-  .contact { text-align: center; background: var(--blue); color: #fff; border-radius: 14px; padding: 32px 24px; }
-  .contact a { color: #fff; font-weight: 600; }
-  .contact p.small { font-size: .9rem; color: #d7e6f1; margin-top: 10px; }
+  .features {
+    list-style: none; margin-top: 36px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;
+  }
+  .features li {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 24px 26px;
+  }
+  .features h3 { color: var(--navy); font-size: 1.02rem; font-weight: 650; margin-bottom: 6px; }
+  .features p { font-size: .95rem; color: var(--muted); }
 
-  footer { padding: 28px 0 40px; text-align: center; font-size: .85rem; color: var(--muted); }
-  footer a { color: var(--muted); margin: 0 8px; }
+  /* Coverage */
+  .coverage-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    padding: 40px 44px; margin-top: 36px;
+  }
+  .coverage-card p { max-width: 700px; }
+  .coverage-card p.note { color: var(--muted); font-size: .92rem; margin-top: 14px; }
+  .flags { font-size: 1.5rem; letter-spacing: .35em; margin-top: 18px; }
+
+  /* Contact */
+  .contact {
+    background: linear-gradient(170deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: #fff; border-radius: 20px; padding: 56px 40px; text-align: center;
+  }
+  .contact h2 { color: #fff; }
+  .contact p { max-width: 560px; margin: 0 auto; color: #b9cddd; }
+  .contact .mail {
+    display: inline-block; margin-top: 26px; padding: 13px 34px;
+    background: #fff; color: var(--navy); font-weight: 600; border-radius: 10px;
+  }
+  .contact .mail:hover { text-decoration: none; opacity: .92; }
+  .contact p.small { font-size: .85rem; color: #7e99ae; margin-top: 22px; }
+
+  footer { padding: 40px 0 52px; text-align: center; font-size: .85rem; color: var(--muted); }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer .sep { color: var(--line); }
+
+  @media (max-width: 640px) {
+    .hero { padding: 64px 0 170px; }
+    .hero h1 { font-size: 2.1rem; }
+    .stats .row { gap: 40px; }
+    .shots figure:nth-child(2) { margin-top: 0; }
+    section { padding: 52px 0; }
+    .coverage-card { padding: 28px 26px; }
+  }
 </style>
 </head>
 <body>
 
-<header>
+<div class="hero">
   <div class="wrap">
     <img class="logo" src="assets/logo.png" alt="Inside D app icon">
     <h1>Inside&nbsp;D</h1>
-    <p class="tagline">The field hockey fan app — one home for Europe's leagues.</p>
+    <p class="tagline">The field hockey fan app</p>
+    <p class="sub">Live scores, standings and playoff brackets for Europe's leading leagues, together in one place.</p>
   </div>
-</header>
+</div>
 
-<section>
+<div class="shots-band">
   <div class="wrap">
     <div class="shots">
       <figure>
         <img src="assets/matchday.png" alt="Matchday screen with final-round results">
-        <figcaption>Matchdays &amp; live scores</figcaption>
+        <figcaption>Matchdays</figcaption>
       </figure>
       <figure>
         <img src="assets/standings.png" alt="League standings with playoff and playdown zones">
-        <figcaption>Standings with playoff zones</figcaption>
+        <figcaption>Standings</figcaption>
       </figure>
       <figure>
-        <img src="assets/bracket.png" alt="German championship playoff bracket">
-        <figcaption>Playoff brackets</figcaption>
+        <img src="assets/bracket.png" alt="Championship playoff bracket">
+        <figcaption>Brackets</figcaption>
       </figure>
     </div>
   </div>
-</section>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="row">
+      <div><div class="n">21</div><div class="l">Competitions</div></div>
+      <div><div class="n">6</div><div class="l">Countries</div></div>
+      <div><div class="n">130+</div><div class="l">Clubs</div></div>
+      <div><div class="n">2</div><div class="l">Languages</div></div>
+    </div>
+  </div>
+</div>
 
 <section>
   <div class="wrap">
-    <h2>What Inside D does</h2>
+    <div class="kicker">The app</div>
+    <h2>Everything a hockey fan needs</h2>
+    <p class="lead">Built for the way fans actually follow the sport: a quick look at the weekend, the table at a glance, and a nudge when your team scores.</p>
     <ul class="features">
-      <li><strong>Live scores &amp; matchdays</strong> — weekend-grouped fixtures, live ticker, penalty-shootout detail.</li>
-      <li><strong>Standings</strong> — always current, with playoff and relegation zones per league.</li>
-      <li><strong>Playoff brackets</strong> — championship final rounds and European tournaments, visualised.</li>
-      <li><strong>Push notifications</strong> — kickoff, goals and full-time for your favourite teams.</li>
-      <li><strong>Club pages</strong> — squads, results and head-to-head across competitions.</li>
-      <li><strong>Bilingual</strong> — German and English today; more languages planned.</li>
+      <li><h3>Live scores</h3><p>Weekend-grouped matchdays, a live ticker and full penalty-shootout detail.</p></li>
+      <li><h3>Standings</h3><p>Always current, with playoff and relegation zones marked per league.</p></li>
+      <li><h3>Playoff brackets</h3><p>Championship final rounds and European tournaments, clearly visualised.</p></li>
+      <li><h3>Push notifications</h3><p>Match start, every goal and the final whistle for the teams you follow.</p></li>
+      <li><h3>Club pages</h3><p>Squads, results and head-to-head records across competitions.</p></li>
+      <li><h3>Two languages</h3><p>German and English today, with more on the roadmap.</p></li>
     </ul>
   </div>
 </section>
 
-<section>
+<section style="padding-top: 0;">
   <div class="wrap">
-    <h2>Coverage</h2>
-    <div class="coverage">
-      <p>🇳🇱 Hoofdklasse &nbsp;·&nbsp; 🇩🇪 1. &amp; 2. Bundesliga &nbsp;·&nbsp; 🇧🇪 Hockey League &nbsp;·&nbsp; 🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier Division &nbsp;·&nbsp; 🇸🇪 Hockey11s &nbsp;·&nbsp; 🇩🇰 Herreliga, Dameliga &amp; 1. Division</p>
-      <p>🏆 EuroHockey League (Men &amp; Women) &nbsp;·&nbsp; EuroHockey Club Challenge II</p>
-      <p style="color: var(--muted); font-size: .9rem; margin-top: 12px;">Men's and women's competitions, senior level. Currently in closed testing — app store launch in preparation.</p>
+    <div class="kicker">Coverage</div>
+    <h2>One home for European hockey</h2>
+    <div class="coverage-card">
+      <p>Inside D covers national leagues in six countries, from the continent's strongest divisions to growing hockey nations, alongside Europe's premier club tournaments. Men's and women's competitions, senior level.</p>
+      <p class="note">Currently in closed testing. App store launch in preparation, and the coverage map keeps growing.</p>
+      <div class="flags">🇳🇱 🇩🇪 🇧🇪 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🇸🇪 🇩🇰 🇪🇺</div>
     </div>
   </div>
 </section>
 
-<section>
+<section style="padding-top: 0;">
   <div class="wrap">
     <div class="contact">
-      <h2 style="color:#fff">Federations &amp; clubs</h2>
-      <p>We credit and link every data source, and we're building this with the hockey community.<br>
-      Questions, partnership ideas, or a competition we should cover?</p>
-      <p style="margin-top: 14px;"><a href="mailto:felix@inside-d.com">felix@inside-d.com</a></p>
-      <p class="small">Independent developer project — no ads, no data resale.</p>
+      <h2>Federations &amp; clubs</h2>
+      <p>Every data source is credited and linked. If you run a competition we should cover, or want to talk partnership, we would love to hear from you.</p>
+      <a class="mail" href="mailto:felix@inside-d.com">felix@inside-d.com</a>
+      <p class="small">Independent developer project. No ads, no data resale.</p>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <a href="impressum.html">Impressum</a> ·
-    <a href="datenschutz.html">Datenschutzerklärung</a> ·
+    <a href="impressum.html">Impressum</a><span class="sep">·</span>
+    <a href="datenschutz.html">Datenschutzerklärung</a><span class="sep">·</span>
     <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-    <p style="margin-top: 10px;">© 2026 Inside D</p>
+    <p style="margin-top: 12px;">© 2026 Inside D</p>
   </div>
 </footer>
 
