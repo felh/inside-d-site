@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inside D · Field hockey, all in one app</title>
-<meta name="description" content="Inside D brings field hockey into one fan app: 43 competitions across 6 countries plus international tournaments, with live scores, match centers, standings, brackets, match reports and push notifications.">
+<meta name="description" content="Inside D: live scores, results, tables and match reports from international field hockey and the national leagues behind it. Free, no account, no ads.">
 <meta name="theme-color" content="#173A52">
 <meta property="og:title" content="Inside D · Field hockey, all in one app">
-<meta property="og:description" content="Live scores, match centers, tables, brackets and match reports, from the Bundesliga to the World Cup.">
-<meta property="og:image" content="https://inside-d.com/assets/lobby.webp">
+<meta property="og:description" content="International field hockey in one free app: live scores, results, tables, brackets and match reports.">
+<meta property="og:image" content="https://inside-d.com/assets/ehl-match.webp">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,7 +134,7 @@
   .stats .row { display: grid; grid-template-columns: repeat(4, 1fr); }
   .stats .cell { padding: 30px 12px; text-align: center; }
   .stats .cell + .cell { border-left: 1px solid var(--border); }
-  .stats .n { font-size: 2.1rem; font-weight: 800; letter-spacing: -.03em; color: var(--text); line-height: 1.1; }
+  .stats .n { font-size: 1.15rem; font-weight: 800; letter-spacing: -.015em; color: var(--text); line-height: 1.25; }
   .stats .l { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-top: 6px; font-weight: 500; }
 
   /* ---------- Sections ---------- */
@@ -182,10 +182,10 @@
 
   /* ---------- Gallery ---------- */
   .gallery {
-    display: flex; justify-content: safe center; gap: 40px; overflow-x: auto; scroll-snap-type: x mandatory;
+    display: flex; justify-content: safe center; gap: 28px; overflow-x: auto; scroll-snap-type: x mandatory;
     padding: 48px 24px 40px; margin: 0 -24px; scrollbar-width: thin;
   }
-  .gallery figure { flex: 0 0 260px; scroll-snap-align: center; }
+  .gallery figure { flex: 0 0 240px; scroll-snap-align: center; }
   .gallery figcaption { text-align: center; font-size: .9rem; color: var(--muted); margin-top: 16px; font-weight: 500; }
 
   /* ---------- Coverage ---------- */
@@ -262,7 +262,7 @@
     .hero-phones .p1 { width: 196px; }
     .hero-phones .p2, .hero-phones .p3 { width: 150px; }
     .beta { padding: 40px 22px; border-radius: 22px; }
-    .stats .n { font-size: 1.8rem; }
+    .stats .n { font-size: 1rem; }
     .eyebrow { font-size: .68rem; letter-spacing: .05em; }
     .gallery { margin: 0 -16px; padding-inline: 16px; }
   }
@@ -306,16 +306,16 @@
     <div>
       <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Coming soon to Google Play</span>
       <h1>Field hockey.<br><em>All of it.</em> One app.</h1>
-      <p class="lead">From the Bundesliga to the World Cup: live scores, match centers, tables, brackets and match reports for 43 competitions, men's and women's, in one place.</p>
+      <p class="lead">Live scores, results, tables and match reports from European club hockey and the big championships, plus the national leagues the players come from. Men's and women's, in one free app.</p>
       <div class="cta">
         <a class="btn btn-primary" href="#features">See what's inside</a>
       </div>
       <p class="fine">No account. No ads. German &amp; English.</p>
     </div>
     <div class="hero-phones">
-      <div class="phone p2"><div class="screen"><img src="assets/match.webp" alt="Match center: quarter scores, penalty shootout and goal timeline with a penalty corner" width="540" height="1110"></div></div>
-      <div class="phone p3"><div class="screen"><img src="assets/standings.webp" alt="1. Bundesliga table with playoff and playdown zone stripes" width="540" height="1110"></div></div>
-      <div class="phone p1"><div class="screen"><img src="assets/lobby.webp" alt="Home screen: next match countdown, latest results and match report cards" width="540" height="1110" fetchpriority="high"></div></div>
+      <div class="phone p2"><div class="screen"><img src="assets/bracket.webp" alt="World championship knockout bracket with semi-finals, final and placings" width="540" height="1110"></div></div>
+      <div class="phone p3"><div class="screen"><img src="assets/standings.webp" alt="League table with playoff and playdown zone stripes" width="540" height="1110"></div></div>
+      <div class="phone p1"><div class="screen"><img src="assets/lobby.webp" alt="Home screen: live ticker with two running games, live match and match report cards" width="540" height="1110" fetchpriority="high"></div></div>
     </div>
   </div>
 </header>
@@ -323,10 +323,10 @@
 <div class="stats">
   <div class="wrap">
     <div class="row">
-      <div class="cell"><div class="n">43</div><div class="l">Competitions</div></div>
-      <div class="cell"><div class="n">6</div><div class="l">Countries</div></div>
-      <div class="cell"><div class="n">199</div><div class="l">Clubs</div></div>
-      <div class="cell"><div class="n">367</div><div class="l">Teams</div></div>
+      <div class="cell"><div class="n">European club hockey</div><div class="l">Every round, men &amp; women</div></div>
+      <div class="cell"><div class="n">Championships</div><div class="l">World &amp; European</div></div>
+      <div class="cell"><div class="n">Hockey5s</div><div class="l">The fast format too</div></div>
+      <div class="cell"><div class="n">National leagues</div><div class="l">Where the players come from</div></div>
     </div>
   </div>
 </div>
@@ -341,53 +341,25 @@
     </div>
 
     <div class="feature">
-      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/lobby.webp" alt="Home screen with next match, results of the weekend and news cards" width="540" height="1110" loading="lazy"></div></div></div>
-      <div>
-        <div class="label">Today</div>
-        <h3>Your weekend on one screen.</h3>
-        <p>Favourite your teams and leagues. The home screen leads with what matters right now: your next match counting down, live games ticking along, fresh results and the hottest stories of the day.</p>
-        <ul class="ticks">
-          <li>Live ticker with pulsing live markers</li>
-          <li>Teams and leagues you follow come first</li>
-          <li>"Today in focus" strip with the day's top stories</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="feature">
-      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/match.webp" alt="Match center with quarter-by-quarter scores, shootout attempts, green cards and goals" width="540" height="1110" loading="lazy"></div></div></div>
+      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/match.webp" alt="Match center with quarter scores, goals, penalty corners, cards and match stats" width="540" height="1110" loading="lazy"></div></div></div>
       <div>
         <div class="label">Match center</div>
         <h3>Every goal, every corner, every card.</h3>
         <p>Quarter-by-quarter scores, a timeline of goals, penalty corners and cards, full shootout detail, line-ups, head-to-head and the table as it stood on the day.</p>
         <ul class="ticks">
+          <li>Live scores with pulsing live markers</li>
           <li>Penalty shootouts attempt by attempt</li>
           <li>Line-ups with captains and keepers</li>
-          <li>Head-to-head record between the clubs</li>
         </ul>
       </div>
     </div>
 
     <div class="feature">
-      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/standings.webp" alt="League table with movement arrows and coloured zone stripes" width="540" height="1110" loading="lazy"></div></div></div>
-      <div>
-        <div class="label">Tables</div>
-        <h3>Tables that move with the game.</h3>
-        <p>Standings update as results come in, with arrows for every place gained or lost. Each league gets its own zones, so you see at a glance who is heading for the playoffs and who is fighting relegation.</p>
-        <div class="zones" aria-label="Zone colours">
-          <span><i style="background:var(--success)"></i>Playoffs &amp; promotion</span>
-          <span><i style="background:var(--amber)"></i>Playdowns</span>
-          <span><i style="background:var(--error)"></i>Relegation</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="feature">
-      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/bracket.webp" alt="FIH Hockey World Cup knockout bracket with semi-finals, final and classification matches" width="540" height="1110" loading="lazy"></div></div></div>
+      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/bracket.webp" alt="World championship knockout bracket with semi-finals, final and classification matches" width="540" height="1110" loading="lazy"></div></div></div>
       <div>
         <div class="label">Tournaments</div>
         <h3>From pool stage to final.</h3>
-        <p>Knockout brackets for the German championship finals, the Euro Hockey League and the FIH Hockey World Cup. Two-stage pool formats with carried-over results, best-of-three series and every classification match.</p>
+        <p>European club competitions and world and European championships, from the first pool game to the final. Two-stage pool formats with carried-over results and every classification match.</p>
         <ul class="ticks">
           <li>Brackets fill in as the rounds are played</li>
           <li>Pools, second-round groups and placings</li>
@@ -396,15 +368,42 @@
     </div>
 
     <div class="feature">
-      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/article.webp" alt="Match report article: Mannheimer HC wins 8:6 after a penalty shootout" width="540" height="1110" loading="lazy"></div></div></div>
+      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/ehl-pools.webp" alt="Pool tables with the qualifying place marked" width="540" height="1110" loading="lazy"></div></div></div>
+      <div>
+        <div class="label">Tables</div>
+        <h3>Tables that move with the game.</h3>
+        <p>Standings update as results come in. Every competition gets its own zones, so you see at a glance who goes through, who is heading for the playoffs and who is fighting relegation.</p>
+        <div class="zones" aria-label="Zone colours">
+          <span><i style="background:var(--success)"></i>Through &amp; promotion</span>
+          <span><i style="background:var(--amber)"></i>Playdowns</span>
+          <span><i style="background:var(--error)"></i>Relegation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/article.webp" alt="Match report article with the result and the story of the game" width="540" height="1110" loading="lazy"></div></div></div>
       <div>
         <div class="label">News</div>
         <h3>The story behind the score.</h3>
-        <p>Match reports, weekend roundups and previews, generated from the match data within hours of the final whistle. Not just for the top flight: the lower leagues get their stories too.</p>
+        <p>Match reports, roundups and previews, written from the match data within hours of the final whistle. For the big tournaments, and for the leagues further down too.</p>
         <ul class="ticks">
           <li>Reports with scorers, comebacks and table context</li>
-          <li>Roundups and previews for every level</li>
-          <li>League and federation news in one feed</li>
+          <li>Tournament previews and round-by-round roundups</li>
+          <li>News next to the results it belongs to</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/lobby.webp" alt="Home screen with next match, latest results and news cards" width="540" height="1110" loading="lazy"></div></div></div>
+      <div>
+        <div class="label">Today</div>
+        <h3>Your hockey on one screen.</h3>
+        <p>Follow your teams and competitions. The home screen leads with what matters right now: your next match counting down, live games ticking along, fresh results and the stories of the day.</p>
+        <ul class="ticks">
+          <li>Teams and competitions you follow come first</li>
+          <li>Push alerts for match start, goals and full time</li>
         </ul>
       </div>
     </div>
@@ -451,8 +450,10 @@
     </div>
 
     <div class="gallery" role="list" aria-label="More screens">
-      <figure role="listitem"><div class="phone"><div class="screen"><img src="assets/matchday.webp" alt="Matchday screen for the 1. Bundesliga weekend, Friday to Sunday" width="540" height="1110" loading="lazy"></div></div><figcaption>Matchday</figcaption></figure>
-      <figure role="listitem"><div class="phone"><div class="screen"><img src="assets/team.webp" alt="Team page of Hamburger Polo Club with form guide and table excerpt" width="540" height="1110" loading="lazy"></div></div><figcaption>Team page</figcaption></figure>
+      <figure role="listitem"><div class="phone"><div class="screen"><img src="assets/matchday.webp" alt="Matchday screen: a tournament weekend day by day, results per pool" width="540" height="1110" loading="lazy"></div></div><figcaption>Matchday</figcaption></figure>
+      <figure role="listitem"><div class="phone"><div class="screen"><img src="assets/ehl-match.webp" alt="Match center of a European club tournament game" width="540" height="1110" loading="lazy"></div></div><figcaption>Tournament match</figcaption></figure>
+      <figure role="listitem"><div class="phone"><div class="screen"><img src="assets/overview.webp" alt="League overview: the weekend's results and a weekly roundup" width="540" height="1110" loading="lazy"></div></div><figcaption>League overview</figcaption></figure>
+      <figure role="listitem"><div class="phone"><div class="screen"><img src="assets/team.webp" alt="Team page with form guide, last and next match and table excerpt" width="540" height="1110" loading="lazy"></div></div><figcaption>Team page</figcaption></figure>
     </div>
   </div>
 </section>
@@ -461,53 +462,48 @@
   <div class="wrap">
     <div class="section-head">
       <div class="label">Coverage</div>
-      <h2 id="cov-h">From the top flight to the Verbandsliga.</h2>
-      <p>43 competitions: 36 national leagues in six countries plus seven international tournaments. Men's and women's, senior level.</p>
+      <h2 id="cov-h">International first. And the leagues behind it.</h2>
+      <p>The big international competitions, followed from the first pool game to the final, next to the national leagues where the players play every weekend. Senior hockey, men's and women's.</p>
     </div>
     <div class="countries">
-      <article class="country">
-        <header><h4>Germany</h4><span class="count">25</span></header>
-        <ul>
-          <li>1. Bundesliga, men &amp; women</li>
-          <li>2. Bundesliga North &amp; South</li>
-          <li>WHV pyramid: Regionalliga to 2. Verbandsliga (19 groups)</li>
-          <li>Championship finals bracket</li>
-        </ul>
-      </article>
-      <article class="country">
-        <header><h4>Netherlands</h4><span class="count">2</span></header>
-        <ul><li>Hoofdklasse, men &amp; women</li></ul>
-      </article>
-      <article class="country">
-        <header><h4>Belgium</h4><span class="count">2</span></header>
-        <ul><li>Hockey League, men &amp; women</li></ul>
-      </article>
-      <article class="country">
-        <header><h4>England</h4><span class="count">2</span></header>
-        <ul><li>Premier Division, men &amp; women</li></ul>
-      </article>
-      <article class="country">
-        <header><h4>Denmark</h4><span class="count">3</span></header>
-        <ul><li>Herreliga &amp; Dameliga</li><li>1. Division</li></ul>
-      </article>
-      <article class="country">
-        <header><h4>Sweden</h4><span class="count">2</span></header>
-        <ul><li>Hockey11s, men &amp; women</li></ul>
-      </article>
       <article class="country wide">
         <div>
-          <header><h4>International</h4><span class="count">7</span></header>
+          <header><h4>International</h4></header>
           <p>Clubs and national teams.</p>
         </div>
         <ul>
-          <li>FIH Hockey World Cup, men &amp; women</li>
-          <li>Euro Hockey League, men &amp; women</li>
-          <li>EuroHockey 5s Championship, men &amp; women</li>
-          <li>EuroHockey Club Challenge II, men</li>
+          <li>European club competitions, men &amp; women</li>
+          <li>World and European championships</li>
+          <li>Hockey5s championships</li>
+          <li>Pools, brackets and placings</li>
         </ul>
       </article>
+      <article class="country">
+        <header><h4>Germany</h4></header>
+        <ul><li>Top flight to regional leagues</li></ul>
+      </article>
+      <article class="country">
+        <header><h4>Netherlands</h4></header>
+        <ul><li>Senior pyramid, men &amp; women</li></ul>
+      </article>
+      <article class="country">
+        <header><h4>Belgium</h4></header>
+        <ul><li>Top flight, men &amp; women</li></ul>
+      </article>
+      <article class="country">
+        <header><h4>England</h4></header>
+        <ul><li>Top flight, men &amp; women</li></ul>
+      </article>
+      <article class="country">
+        <header><h4>Denmark</h4></header>
+        <ul><li>Top flights and second tier</li></ul>
+      </article>
+      <article class="country">
+        <header><h4>Sweden</h4></header>
+        <ul><li>11-a-side and Hockey5s</li></ul>
+      </article>
     </div>
-    <p class="note">The coverage map keeps growing.</p>
+    <p class="note">The coverage map keeps growing. Inside D is an independent project, not affiliated with or endorsed by any federation or league. Federations can <a href="mailto:felix@inside-d.com">reach us</a> any time to correct or remove anything.</p>
   </div>
 </section>
 
